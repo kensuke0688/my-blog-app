@@ -1,4 +1,5 @@
 import { posts } from '../../data/posts';
+import { Link } from "react-router-dom";
 
 const ArticleList = () => {
     return (
@@ -6,11 +7,12 @@ const ArticleList = () => {
             <h1 className="text-2xl font-bold text-gray-900 mb-6">記事一覧</h1>
             <ul className="divide-y divide-gray-200">
                 {posts.map(post => (
-                    <li className="flex gap-6 py-6" key={post.id}>
-                        <img
-                            src={post.thumbnailUrl}
-                            alt={`${post.title} thumbnail`}
-                            className="w-48 h-32 object-cover flex-shrink-0"
+                    <li className="flex gap-6 py-6" key={post.id} >
+                        <Link to={`/article/${post.id}`} className="flex gap-6">
+                            <img
+                                src={post.thumbnailUrl}
+                                alt={`${post.title} thumbnail`}
+                                className="w-48 h-32 object-cover flex-shrink-0"
                         />
                         <div className="flex flex-col gap-2">
                             <div className="flex items-center gap-2 text-sm text-gray-500">
@@ -31,8 +33,10 @@ const ArticleList = () => {
                                 className="text-gray-500 text-sm line-clamp-2"
                                 dangerouslySetInnerHTML={{ __html: post.content }}
                             />
-                        </div>
-                    </li>
+                            </div>
+                    </Link>
+                        </li>
+                        
                 ))}
             </ul>
         </div>
