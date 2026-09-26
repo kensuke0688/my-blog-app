@@ -16,7 +16,7 @@ const ArticleDetail = () => {
     }, []);
 
     if (!article) {
-        return <p>読み込み中</p>;
+        return <p>記事を読み込み中です...</p>;
     }
 
     return (
